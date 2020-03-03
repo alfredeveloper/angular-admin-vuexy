@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { navs } from '../../../assets/util/js/navs';
-import { appMenu } from '../../../assets/util/js/app';
+import { appMenu, app, component } from '../../../assets/util/js/app';
+import { componentFactoryName } from '@angular/compiler';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,7 +16,8 @@ export class SidenavComponent implements OnInit {
 
     navs();
     appMenu();
-  
+    app();
+    component();
   }
 
 }

@@ -125,7 +125,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('company_login', response.company_login);
           localStorage.setItem('office_login', response.office_login);
 
-          this.router.navigate(['/dashboard']);
+          window.location.href = '/#/dashboard'
+          // this.router.navigate(['/dashboard']);
         },
         error => {
           console.log('error', error);
