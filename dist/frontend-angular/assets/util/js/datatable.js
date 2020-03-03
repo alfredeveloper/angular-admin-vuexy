@@ -138,7 +138,7 @@ export function datatableCompanies(data) {
 
     // On Edit
     $('.action-edit').on("click",function(e){
-      axios.get('http://localhost:8000/api/companies/' + localStorage.getItem('companyId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/companies/' + localStorage.getItem('companyId'))
       .then(function(response) {
         console.log('response', response.data)
         $('#name-edit').val(response.data.name);
@@ -156,7 +156,7 @@ export function datatableCompanies(data) {
     $('.action-delete').on("click", function(e){
       var fila = $(this);
 
-      axios.delete("http://localhost:8000/api/companies/" + localStorage.getItem('companyId'))
+      axios.delete("http://52.205.193.59/apibitel/index.php/api/companies/" + localStorage.getItem('companyId'))
       .then(function(response) {
         console.log('responsessss', response)
         Swal.fire({
@@ -460,7 +460,7 @@ export function datatableSeats(data) {
 
     // On Edit
     $('.action-edit').on("click",function(e){
-      axios.get('http://localhost:8000/api/sedes/' + localStorage.getItem('seatId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/sedes/' + localStorage.getItem('seatId'))
       .then(function(response) {
         console.log('response', response.data)
         $('#company_id_edit').val(response.data.company_id);
@@ -475,8 +475,8 @@ export function datatableSeats(data) {
     // On Delete
     $('.action-delete').on("click", function(e){
       var fila = $(this);
-      console.log("http://localhost:8000/api/sedes/" + localStorage.getItem('seatId'))
-      axios.delete("http://localhost:8000/api/sedes/" + localStorage.getItem('seatId'))
+      console.log("http://52.205.193.59/apibitel/index.php/api/sedes/" + localStorage.getItem('seatId'))
+      axios.delete("http://52.205.193.59/apibitel/index.php/api/sedes/" + localStorage.getItem('seatId'))
       .then(function(response) {
         console.log('responsessss', response)
         $("#company_edit").val(response.data.company_id)
@@ -655,7 +655,7 @@ export function datatableSubsidiaries(data) {
 
     // On Edit
     $('.action-edit').on("click",function(e){
-      axios.get('http://localhost:8000/api/offices/' + localStorage.getItem('subsidiaryId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/offices/' + localStorage.getItem('subsidiaryId'))
       .then(function(response) {
         console.log('response', response.data)
         $('#seat-edit').val(response.data.sede_id);
@@ -672,7 +672,7 @@ export function datatableSubsidiaries(data) {
     $('.action-delete').on("click", function(e){
       var fila = $(this);
 
-      axios.delete("http://localhost:8000/api/offices/" + localStorage.getItem('subsidiaryId'))
+      axios.delete("http://52.205.193.59/apibitel/index.php/api/offices/" + localStorage.getItem('subsidiaryId'))
       .then(function(response) {
         console.log('responsessss', response)
         Swal.fire({
@@ -830,7 +830,7 @@ export function datatableSuppliers(data) {
 
     // On Edit
     $('.action-edit').on("click",function(e){
-      axios.get('http://localhost:8000/api/suppliers/' + localStorage.getItem('supplierId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/suppliers/' + localStorage.getItem('supplierId'))
       .then(function(response) {
         console.log('response', response.data)
         $('#name-edit').val(response.data.name);
@@ -851,7 +851,7 @@ export function datatableSuppliers(data) {
     $('.action-delete').on("click", function(e){
       var fila = $(this);
 
-      axios.delete("http://localhost:8000/api/suppliers/" + localStorage.getItem('supplierId'))
+      axios.delete("http://52.205.193.59/apibitel/index.php/api/suppliers/" + localStorage.getItem('supplierId'))
       .then(function(response) {
         console.log('responsessss', response)
         Swal.fire({
@@ -1010,7 +1010,7 @@ export function datatableCategories(data) {
 
     // On Edit
     $('.action-edit').on("click",function(e){
-      axios.get('http://localhost:8000/api/categories/' + localStorage.getItem('categoryId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/categories/' + localStorage.getItem('categoryId'))
       .then(function(response) {
         console.log('response', response.data)
         $('#name-edit').val(response.data.name);
@@ -1026,7 +1026,7 @@ export function datatableCategories(data) {
     $('.action-delete').on("click", function(e){
       var fila = $(this);
 
-      axios.delete("http://localhost:8000/api/categories/" + localStorage.getItem('categoryId'))
+      axios.delete("http://52.205.193.59/apibitel/index.php/api/categories/" + localStorage.getItem('categoryId'))
       .then(function(response) {
         console.log('responsessss', response)
         Swal.fire({
@@ -1686,7 +1686,7 @@ export function datatableAlmacen(data) {
 
     $('.kardex').on("click", function(e){
       $("#tableKardex").html('');
-      axios.get('http://localhost:8000/api/kardex?inventory_id=' + localStorage.getItem('inventoryId'))
+      axios.get('http://52.205.193.59/apibitel/index.php/api/kardex?inventory_id=' + localStorage.getItem('inventoryId'))
       .then(function(response){
         console.log('listado kardex', response)
         response.data.forEach(element => {
