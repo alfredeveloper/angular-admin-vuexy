@@ -14,7 +14,7 @@ export class WarehouseService {
 
   getWarehouses(): Observable<any> {
     
-    return this.http.get<any>(`${environment.apiUrl}/api/inventories?company_id=${localStorage.getItem('companyId')}`);
+    return this.http.get<any>(`${environment.apiUrl}/api/inventories?company_id=${localStorage.getItem('company_login')}`);
 
   }
 
