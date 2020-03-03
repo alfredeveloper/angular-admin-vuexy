@@ -1,0 +1,874 @@
+<div *ngIf="firstView">
+    <section id="multiple-column-form">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card" style="margin-bottom: 0px;">
+                    <div class="card-header flex-column align-items-start">
+                        <h4 class="card-title">Compra - Nota de Envío</h4>
+                        <p class="text-muted mt-25">Ingresa los productos de tu proveedor</p>
+
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form">
+                                <div class="form-body">
+                                    <form class="form">
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <label for="company_id"> Proveedor </label>
+
+                                                    <select class="select2 form-control" name="company_id"
+                                                        (change)="cambio($event.target)">
+                                                        <option value="0" disabled>seleccion proveedor</option>
+                                                        <option [value]="supplier.id"
+                                                            *ngFor="let supplier of suppliers">{{supplier.name}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3 col-12" style="padding-top: 18px;">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="ruc" class="form-control"
+                                                            placeholder="RUC" [(ngModel)]="ruc" name="ruc" disabled>
+                                                        <label for="ruc">RUC</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12" style="padding-top: 18px;">
+                                                    <div class="form-label-group">
+                                                        <input type="text" id="address" class="form-control"
+                                                            placeholder="Dirección" [(ngModel)]="address" name="address"
+                                                            disabled>
+                                                        <label for="address">Dirección</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-12" style="padding-top: 18px;">
+                                                    <div class="form-label-group">
+                                                        <input type="date" id="fecha-registro" class="form-control"
+                                                            placeholder="Fecha de Registro" name="fecha-registro"
+                                                            [(ngModel)]="purchase.register_date">
+                                                        <label for="fecha-registro">Fecha de Registro</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </form>
+
+                            <section id="data-list-view" class="data-list-view-header">
+                        
+                        
+                                <!-- DataTable starts -->
+                                <div class="table-responsive">
+                                    <table id="dtDeliveryNote" class="table data-list-view">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>PRODUCTO</th>
+                                                <th>CODIGO</th>
+                                                <th>CAPACIDAD</th>
+                                                <th>COLOR</th>
+                                                <th>IMEI DESDE</th>
+                                                <th>IMEI HASTA</th>
+                                                <th>PRECIO</th>
+                                                <th>CANTIDAD</th>
+                                                <th>SUBTOTAL</th>
+                                                <th>ACCIÓN</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                        
+                                        </tbody>
+                                    </table>
+                        
+                                </div>
+                                <!-- DataTable ends -->
+                        
+                                <!-- add new sidebar starts -->
+                                <div class="add-new-data-sidebar">
+                                    <div class="overlay-bg" id="bg-nota"></div>
+                                    <div class="add-new-data" id="data-nota">
+                                        <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                            <div>
+                                                <h4 class="text-uppercase">Agregar PRODUCTO</h4>
+                                            </div>
+                                            <div class="hide-data-sidebar">
+                                                <i class="feather icon-x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="data-items pb-3">
+                                            <div class="data-fields px-2 mt-1">
+                                                <div class="row">
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="category"> Tipo de Producto </label>
+                                                        <select class="form-control" id="category" name="category"
+                                                            [(ngModel)]="deliveryDetail.category_id">
+                                                            <option disabled>Seleccione Categoria</option>
+                                                            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="brand">Marca</label>
+                                                        <input type="text" class="form-control" id="brand" name="brand"
+                                                            [(ngModel)]="deliveryDetail.brand">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="type">Tipo</label>
+                                                        <input type="text" class="form-control" id="type" name="type"
+                                                            [(ngModel)]="deliveryDetail.type">
+                                                    </div>
+                        
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="code">Código</label>
+                                                        <input type="text" class="form-control" id="code" name="code"
+                                                            [(ngModel)]="deliveryDetail.code">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="capacity">Capacidad</label>
+                                                        <input type="text" class="form-control" id="capacity" name="capacity"
+                                                            [(ngModel)]="deliveryDetail.capacity">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="color">Color</label>
+                                                        <input type="text" class="form-control" id="color" name="color"
+                                                            [(ngModel)]="deliveryDetail.color">
+                                                    </div>
+                        
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="imei">IMEI</label>
+                                                        <input type="text" class="form-control" id="imei" name="imei"
+                                                            [(ngModel)]="deliveryDetail.imei_from">
+                                                    </div>
+                        
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="price">Precio</label>
+                                                        <input type="number" class="form-control" id="price" name="price"
+                                                            [(ngModel)]="deliveryDetail.price"
+                                                            (keyup)="calcularSubtotal()">
+                                                    </div>
+                        
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="quantity">Cantidad</label>
+                                                        <input type="number" class="form-control" id="quantity" name="quantity"
+                                                            [(ngModel)]="deliveryDetail.quantity"
+                                                            (keyup)="calcularSubtotal()">
+                                                    </div>
+                        
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="sub-total">Sub Total</label>
+                                                        <input type="number" class="form-control" id="sub-total" name="subtotal"
+                                                            [(ngModel)]="deliveryDetail.subtotal" disabled>
+                                                    </div>
+                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                            <div (click)="agregarDetalleDelivery()">
+                                                <button type="button" class="btn btn-primary">Agregar Producto</button>
+                                            </div>
+                                            <div class="cancel-data-btn">
+                                                <button class="btn btn-outline-danger">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- add new sidebar ends -->
+                            </section>
+                        
+                            <div class="row">
+                                <div class="col-sm-12 offset-md-12">
+                        
+                                    <div class="btn btn-primary float-right" (click)="terceraVista()">
+                                        SIGUIENTE
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- tabla 1 -->
+</div>
+
+<div *ngIf="secondView">
+
+    <section id="checkout-address" class="list-view product-checkout">
+        <div class="card" style="margin-bottom: 0px;">
+            <div class="card-header flex-column align-items-start">
+                <h4 class="card-title">Guía de Remisión</h4>
+                <p class="text-muted mt-25">Ingrese la guía de remisión</p>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="fecha-emision">Fecha de Emisión:</label>
+                                <input type="date" id="fecha-emision" class="form-control"
+                                    name="fecha-emision" [(ngModel)]="remisionGuide.emission_date">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="fecha-transferencia">Fecha de Transferencia:</label>
+                                <input type="date" id="fecha-transferencia" class="form-control"
+                                    name="fecha-transferencia"
+                                    [(ngModel)]="remisionGuide.transfer_date">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="serie">Serie:</label>
+                                <input type="text" id="serie" class="form-control" name="serie"
+                                    [(ngModel)]="remisionGuide.serie">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="correlativo">Correlativo:</label>
+                                <input type="text" id="correlativo" class="form-control"
+                                    name="correlativo" [(ngModel)]="remisionGuide.correlative">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="origen">Domicilio de partida:</label>
+                                <input type="text" id="origen" class="form-control" name="origen"
+                                    [(ngModel)]="remisionGuide.origin">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="destino">Domicilio de llegada:</label>
+                                <input type="text" id="destino" class="form-control" name="destino"
+                                    [(ngModel)]="remisionGuide.destination">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="vehiculo">Vehiculo:</label>
+                                <input type="text" id="vehiculo" class="form-control" name="vehiculo"
+                                    [(ngModel)]="remisionGuide.vehicle">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="certificado-registro">Certificado de registro:</label>
+                                <input type="text" id="certificado-registro" class="form-control"
+                                    name="certificado-registro"
+                                    [(ngModel)]="remisionGuide.registration_certificate">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="licensia-conductor">Licensia del conductor:</label>
+                                <input type="text" id="licensia-conductor" class="form-control"
+                                    name="licensia-conductor"
+                                    [(ngModel)]="remisionGuide.driver_license">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="razon-transferencia">Razon de transferencia:</label>
+                                <input type="text" id="razon-transferencia" class="form-control"
+                                    name="razon-transferencia"
+                                    [(ngModel)]="remisionGuide.transfer_reason">
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- tabla 2 -->
+    <section id="data-list-view" class="data-list-view-header">
+
+        <!-- DataTable starts -->
+        <div class="table-responsive">
+            <table id="dtGuiaRemision" class="table data-list-view">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>CODIGO</th>
+                        <th>UNIDAD DE MEDIDA</th>
+                        <th>CANTIDAD</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>ACCIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+        <!-- DataTable ends -->
+
+        <!-- add new sidebar starts -->
+        <div class="add-new-data-sidebar">
+            <div class="overlay-bg" id="bg-remision"></div>
+            <div class="add-new-data" id="sn-remision">
+                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                    <div>
+                        <h4 class="text-uppercase">AGREGAR PARAMETROS</h4>
+                    </div>
+                    <div class="hide-data-sidebar">
+                        <i class="feather icon-x"></i>
+                    </div>
+                </div>
+                <div class="data-items pb-3">
+                    <div class="data-fields px-2 mt-1">
+                        <div class="row">
+
+                            <div class="col-sm-12 data-field-col">
+                                <label for="name">Código</label>
+                                <input type="text" class="form-control" id="name" name="product"
+                                    [(ngModel)]="guideDetail.code">
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="code">Unidad de Medida</label>
+                                <input type="text" class="form-control" id="code" name="code"
+                                    [(ngModel)]="guideDetail.measure_unit">
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="capacity">Cantidad</label>
+                                <input type="text" class="form-control" id="capacity" name="capacity"
+                                    [(ngModel)]="guideDetail.quantity">
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="color">Descripción</label>
+                                <input type="text" class="form-control" id="color" name="color"
+                                    [(ngModel)]="guideDetail.description">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                    <div (click)="agregarDetalleGuiaRemision()">
+                        <button type="button" class="btn btn-primary">Agregar Producto</button>
+                    </div>
+                    <div class="cancel-data-btn">
+                        <button class="btn btn-outline-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- add new sidebar ends -->
+    </section>
+
+    <section id="checkout-address" class="list-view product-checkout">
+        <div class="card">
+
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <h4>Transportista</h4>
+                            <div class="form-group">
+                                <label for="fecha-emision">Nombre Transportista:</label>
+                                <input type="text" id="fecha-emision" class="form-control"
+                                    name="apt-number">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha-transferencia">RUC Transportista:</label>
+                                <input type="text" id="fecha-transferencia" class="form-control"
+                                    name="landmark">
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <h4>Motivo del Traslado</h4>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 1</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 2</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 3</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 1</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 2</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 3</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 1</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 2</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" checked value="false">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Motivo de traslado 3</span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="row">
+        <div class="col-sm-12 offset-md-12">
+            <div class="btn btn-primary float-left" (click)="primeraVista()">
+                ANTERIOR
+            </div>
+            <div class="btn btn-primary float-right" (click)="terceraVista()">
+                SIGUIENTE
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="thirdView">
+    <section id="checkout-address" class="list-view product-checkout">
+        <div class="card" style="margin-bottom: 0px;">
+            <div class="card-header flex-column align-items-start">
+                <h4 class="card-title">Compra - Factura</h4>
+                <p class="text-muted mt-25">Ingrese Factura</p>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="supplier-factura">Provider:</label>
+                                <input type="text" id="supplier-factura" class="form-control"
+                                    name="supplier-factura" [(ngModel)]="supplier" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="ruc-factura">RUC:</label>
+                                <input type="text" id="ruc-factura" class="form-control" name="ruc"
+                                    [(ngModel)]="ruc" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="address-factura">Dirección:</label>
+                                <input type="text" id="address-factura" class="form-control"
+                                    name="address-factura" [(ngModel)]="address" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="form-group">
+                                <label for="fecha-emision-factura">Fecha Emision:</label>
+                                <input type="date" id="fecha-emision-factura" class="form-control"
+                                    name="fecha-emision-factura" [(ngModel)]="invoice.invoice_date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <br>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Detalle</h4>
+                    
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="serie-factura">Serie:</label>
+                                    <input type="text" id="serie-factura" class="form-control"
+                                        name="serie-factura" [(ngModel)]="invoice.serie">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="correlativo-factura">Correlativo:</label>
+                                    <input type="text" id="correlativo-factura" class="form-control"
+                                        name="correlativo-factura"
+                                        [(ngModel)]="invoice.correlative">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="numero-factura">Numero:</label>
+                                    <input type="text" id="numero-factura" class="form-control"
+                                        name="numero-factura" [(ngModel)]="invoice.number">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="vendedor-factura">Vendedor:</label>
+                                    <input type="text" id="vendedor-factura" class="form-control"
+                                        name="vendedor-factura" [(ngModel)]="invoice.seller">
+                                </div>
+                            </div>
+            
+                            <!-- tabla 3 -->
+                            <section id="data-list-view" class="data-list-view-header" style="width: 100%;">
+            
+                                <!-- DataTable starts -->
+                                <div class="table-responsive">
+                                    <table id="dtFactura" class="table data-list-view">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>TIPO</th>
+                                                <th>CANTIDAD</th>
+                                                <th>DESCRIPCIÓN</th>
+                                                <th>SUB TOTAL</th>
+                                                <th>ACCIÓN</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+            
+                                        </tbody>
+                                    </table>
+            
+                                </div>
+                                <!-- DataTable ends -->
+            
+                                <!-- add new sidebar starts -->
+                                <div class="add-new-data-sidebar">
+                                    <div class="overlay-bg" id="bg-factura"></div>
+                                    <div class="add-new-data" id="sn-factura">
+                                        <div
+                                            class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                            <div>
+                                                <h4 class="text-uppercase">AGREGAR ITEM</h4>
+                                            </div>
+                                            <div class="hide-data-sidebar">
+                                                <i class="feather icon-x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="data-items pb-3">
+                                            <div class="data-fields px-2 mt-1">
+                                                <div class="row">
+            
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="name">Tipo</label>
+                                                        <input type="text" class="form-control"
+                                                            id="name" name="product"
+                                                            [(ngModel)]="invoiceDetail.type">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="code">Cantidad</label>
+                                                        <input type="number" class="form-control"
+                                                            id="code" name="code"
+                                                            [(ngModel)]="invoiceDetail.quantity">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="capacity">Descripcion</label>
+                                                        <input type="text" class="form-control"
+                                                            id="capacity" name="capacity"
+                                                            [(ngModel)]="invoiceDetail.description">
+                                                    </div>
+                                                    <div class="col-sm-12 data-field-col">
+                                                        <label for="color">Sub Total</label>
+                                                        <input type="number" class="form-control"
+                                                            id="subtotal" name="color"
+                                                            [(ngModel)]="invoiceDetail.subtotal">
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                            <div (click)="agregarDetalleFactura()">
+                                                <button type="button"
+                                                    class="btn btn-primary">Agregar
+                                                    Producto</button>
+                                            </div>
+                                            <div class="cancel-data-btn">
+                                                <button
+                                                    class="btn btn-outline-danger">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- add new sidebar ends -->
+                            </section>
+            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-sm-5">
+            <section id="list-group-icons">
+                <div class="row match-height">
+                    
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Resumen</h4>
+
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+
+                                    <ul class="list-group">
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Sub Total.</span>
+                                            <span> S/.</span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="subtotal"
+                                                    name="subtotal"
+                                                    [(ngModel)]="invoice.subtotal"
+                                                    placeholder="Sub Total" disabled>
+
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> IGV </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="igv"
+                                                    name="igv" [(ngModel)]="invoice.igv"
+                                                    placeholder="IGV" disabled>
+
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Descuento.</span>
+                                            <span> S/.</span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="discount"
+                                                    name="discount"
+                                                    [(ngModel)]="invoice.discount"
+                                                    placeholder="Descuento"
+                                                    (keyup)="changeDiscount()">
+
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Total </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="total"
+                                                    name="total"
+                                                    [(ngModel)]="invoice.total"
+                                                    placeholder="Total" disabled>
+
+                                            </span>
+                                        </li>
+                                        <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> <b>Total a Pagar</b></span>
+                                            <span><b>S/ 
+                                                <input type="number" class="form-control" id="rounding" name="rounding" [(ngModel)]="invoice.rounding" placeholder="Total a Pagar">
+                                            
+                                            </b></span>
+                                        </li> -->
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Pago </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="payment"
+                                                    name="payment"
+                                                    [(ngModel)]="invoice.payment"
+                                                    placeholder="Pago"
+                                                    (keyup)="changePayment()">
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Redondeo </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="rounding"
+                                                    name="rounding"
+                                                    [(ngModel)]="invoice.rounding"
+                                                    placeholder="Redondeo" disabled>
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Total Pago </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="total_pay"
+                                                    name="total_pay"
+                                                    [(ngModel)]="invoice.total_pay"
+                                                    placeholder="Total Pago" disabled>
+                                            </span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> Cambio </span>
+                                            <span> S/. </span>
+                                            <span>
+                                                <input type="number"
+                                                    class="form-control" id="change"
+                                                    name="change"
+                                                    [(ngModel)]="invoice.change"
+                                                    placeholder="Cambio" disabled>
+                                            </span>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12 offset-md-12">
+            <div class="btn btn-primary float-left" (click)="primeraVista()">
+                ANTERIOR
+            </div>
+            <div class="btn btn-primary float-right" (click)="registrarCompra()">
+                FINALIZAR
+            </div>
+        </div>
+    </div>
+</div>

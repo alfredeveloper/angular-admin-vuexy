@@ -1,0 +1,86 @@
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template/index.html">
+                    <div class="brand-logo">
+                        <img src="../../../assets/images/logo/vuexy-logo.png" class="logo" width="55px">
+                    </div>
+                    
+                    <h2 class="brand-text mb-0">WOST</h2>
+                </a></li>
+            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
+        </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <!-- <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+                <ul class="menu-content">
+                    <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Analytics</span></a>
+                    </li>
+                    <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">eCommerce</span></a>
+                    </li>
+                </ul>
+            </li> -->
+            <li class=" nav-item" [routerLinkActive]="['active']" [routerLink]="['/dashboard']"><a><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Dashboard</span></a>
+            </li>
+            <li class=" navigation-header"><span>Sistema</span>
+            </li>
+            
+            <li class=" nav-item" [routerLink]="['/compras']" [routerLinkActive]="['active']"><a><i class="feather icon-package"></i><span class="menu-title" data-i18n="Email">Compras</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/proveedores']" [routerLinkActive]="['active']"><a><i class="feather icon-briefcase"></i><span class="menu-title" data-i18n="Email">Proveedores</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/empleados']" [routerLinkActive]="['active']"><a><i class="feather icon-users"></i><span class="menu-title" data-i18n="Email">Empleados</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/categorias']" [routerLinkActive]="['active']"><a><i class="feather icon-codepen"></i><span class="menu-title" data-i18n="Email">Categorías</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/companias']" [routerLinkActive]="['active']"><a><i class="feather icon-globe"></i><span class="menu-title" data-i18n="Chat">Compañías</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/sedes']" [routerLinkActive]="['active']"><a><i class="feather icon-box"></i><span class="menu-title" data-i18n="Chat">Sedes</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/sucursales']" [routerLinkActive]="['active']"><a><i class="feather icon-airplay"></i><span class="menu-title" data-i18n="Todo">Sucursales</span></a>
+            </li>
+            <!-- <li class=" nav-item" [routerLink]="['/almacen']" [routerLinkActive]="['active']"><a><i class="feather icon-circle"></i><span class="menu-title" data-i18n="Todo">Inventario</span></a>
+            </li>
+            <li class=" nav-item" [routerLink]="['/transferencias']" [routerLinkActive]="['active']"><a><i class="feather icon-circle"></i><span class="menu-title" data-i18n="Todo">Transferencias</span></a>
+            </li> -->
+            
+            <li class=" nav-item">
+                <a>
+                    <i class="feather icon-box"></i><span class="menu-title" data-i18n="User">Inventario</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a [routerLink]="['/almacen-principal']" [routerLinkActive]="['active']"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Almacen Principal</span></a>
+                    </li>
+                    <li><a [routerLink]="['/almacen-secundario']" [routerLinkActive]="['active']"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Almacen Sucursal</span></a>
+                    </li>
+                    <li><a [routerLink]="['/transferencias']" [routerLinkActive]="['active']"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Transferencias</span></a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li class=" nav-item" [routerLink]="['/configuracion']" [routerLinkActive]="['active']"><a><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Todo">Configuración</span></a>
+            </li>
+            
+            <!-- 
+            <li class=" nav-item">
+                <a>
+                    <i class="feather icon-credit-card"></i>
+                    <span class="menu-title" data-i18n="Ecommerce">Caja</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a [routerLink]="['/caja-movimientos']" [routerLinkActive]="['active']"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Movimientos</span></a>
+                    </li>
+                    <li><a [routerLink]="['/caja-historial']" [routerLinkActive]="['active']"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Historial</span></a>
+                    </li>
+                    
+                </ul>
+            </li> 
+            -->
+            
+        </ul>
+    </div>
+</div>
+<!-- END: Main Menu-->

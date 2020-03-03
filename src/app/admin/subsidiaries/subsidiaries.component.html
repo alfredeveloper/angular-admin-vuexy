@@ -1,0 +1,153 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Sucursales</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Sucursales</a>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+                        
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtSubsidiaries" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>SEDE</th>
+                                        <th>NOMBRE</th>
+                                        <th>DIRECCION</th>
+                                        <th>TELÉFONO</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-add-subsidiary"></div>
+                            <div class="add-new-data" id="sn-add-subsidiary">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Agregar Sucursal</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="seat"> Sede </label>
+                                                <select class="form-control" id="seat" name="seat" [(ngModel)]="subsidiary.sede_id">
+                                                    <option value="0" disabled selected>seleccione sede</option>
+                                                    <option [value]="sede.id" *ngFor="let sede of seats">{{sede.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name">Nombre</label>
+                                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="subsidiary.name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="address">Dirección</label>
+                                                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="subsidiary.address">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="phone">Teléfono</label>
+                                                <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="subsidiary.phone">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="registrarSucursal()">Agregar Sucursal</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+            
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-subsidiary"></div>
+                            <div class="add-new-data" id="edit-subsidiary">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Editar Sucursal</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="seat-edit"> Sede </label>
+                                                <select class="form-control" id="seat-edit" name="seat-edit" #seat>
+                                                    <option value="0" disabled selected>seleccione sede</option>
+                                                    <option [value]="sede.id" *ngFor="let sede of seats">{{sede.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name-edit">Nombre</label>
+                                                <input type="text" class="form-control" id="name-edit" #name name="name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="address-edit">Dirección</label>
+                                                <input type="text" class="form-control" id="address-edit" #address name="address">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="phone-edit">Teléfono</label>
+                                                <input type="text" class="form-control" id="phone-edit" #phone name="phone">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="actualizarSucursal(seat, name, address, phone)">Guardar Cambios</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Data list view end -->
+                </div>
+            </div>
+        </div>
+
+    </div>

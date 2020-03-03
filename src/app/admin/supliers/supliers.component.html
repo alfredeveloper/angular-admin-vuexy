@@ -1,0 +1,178 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Proveedores</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Proveedores</a>
+                            </li>
+                            
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+                        
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtSuppliers" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>NOMBRE</th>
+                                        <th>RUC</th>
+                                        <th>DIRECCION</th>
+                                        <th>CORREO</th>
+                                        <th>TELÉFONO</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-add-supplier"></div>
+                            <div class="add-new-data" id="sn-add-supplier">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Agregar Proveedor</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <form>
+                                    <div class="data-items pb-3">
+                                        <div class="data-fields px-2 mt-1">
+                                            <div class="row">
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="name">Nombre</label>
+                                                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="supplier.name">
+                                                </div>
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="ruc">RUC</label>
+                                                    <input type="text" maxlength="11" class="form-control" id="ruc" name="ruc" [(ngModel)]="supplier.ruc">
+                                                </div>
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="district">Distrito</label>
+                                                    <select class="form-control" id="district" name="district" [(ngModel)]="supplier.district_id">
+                                                        <option value="1">Distrito 1</option>
+                                                        <option value="2">Distrito 2</option>
+                                                        <option value="3">Distrito 3</option>
+                                                        <option value="4">Distrito 4</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="address">Dirección</label>
+                                                    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="supplier.address">
+                                                </div>
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="email">Correo electrónico</label>
+                                                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="supplier.email">
+                                                </div>
+                                                <div class="col-sm-12 data-field-col">
+                                                    <label for="phone">Teléfono</label>
+                                                    <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="supplier.phone">
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                        <div class="add-data-btn">
+                                            <button class="btn btn-primary" (click)="agregarProveedor()">Agregar Proveedor</button>
+                                        </div>
+                                        <div class="cancel-data-btn">
+                                            <button class="btn btn-outline-danger">Cancel</button>
+                                        </div>
+                                    </div>
+            
+                                </form>
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+            
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-edit-supplier"></div>
+                            <div class="add-new-data" id="sn-edit-supplier">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Editar Proveedor</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name-edit">Nombre</label>
+                                                <input type="text" class="form-control" id="name-edit" #name name="name" [(ngModel)]="supplier.name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="ruc-edit">RUC</label>
+                                                <input type="text" maxlength="11" class="form-control" #ruc id="ruc-edit" name="ruc" [(ngModel)]="supplier.ruc">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="district-edit">Distrito</label>
+                                                <select class="form-control" id="district-edit" #district name="district" [(ngModel)]="supplier.district_id">
+                                                    <option value="1">Distrito 1</option>
+                                                    <option value="2">Distrito 2</option>
+                                                    <option value="3">Distrito 3</option>
+                                                    <option value="4">Distrito 4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="address-edit">Dirección</label>
+                                                <input type="text" class="form-control" id="address-edit" #address name="address" [(ngModel)]="supplier.address">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="email-edit">Correo electrónico</label>
+                                                <input type="email" class="form-control" id="email-edit" #email name="email" [(ngModel)]="supplier.email">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="phone-edit">Teléfono</label>
+                                                <input type="text" class="form-control" id="phone-edit" #phone name="phone" [(ngModel)]="supplier.phone">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="actualizarProveedor(name, ruc, district, address, email, phone)">Guardar Cambios</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </section>
+                    <!-- Data list view end -->
+                </div>
+            </div>
+        </div>
+
+    </div>

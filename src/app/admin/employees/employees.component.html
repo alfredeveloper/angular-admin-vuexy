@@ -1,0 +1,121 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Empleados</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Empleados</a>
+                            </li>
+                            
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+                        
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtEmployees" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>DNI</th>
+                                        <th>NOMBRE</th>
+                                        <th>APELLIDOS</th>
+                                        <th>FECHA DE CUMP.</th>
+                                        <th>CORREO</th>
+                                        <th>TELÉFONO</th>
+                                        <th>ACTIVO?</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg"></div>
+                            <div class="add-new-data">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Agregar Empleado</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="dni">DNI</label>
+                                                <input type="text" maxlength="8" class="form-control" id="dni" name="dni" [(ngModel)]="employee.dni">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Nombres</label>
+                                                <input type="text" class="form-control" id="first_name" name="first_name" [(ngModel)]="employee.first_name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="last_name">Apellidos</label>
+                                                <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="employee.last_name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Fecha de Nacimiento</label>
+                                                <input type="date" class="form-control" id="birthday" name="birthday" [(ngModel)]="employee.birthday">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Correo Electrónico</label>
+                                                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="employee.email">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="data-name">Teléfono</label>
+                                                <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="employee.phone">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="office">Sucursal</label>
+                                                <select class="form-control" id="office" name="office" name="office" [(ngModel)]="employee.email">
+                                                    <option value="1">Sucursal 1</option>
+                                                    <option value="2">Sucursal 2</option>
+                                                    <option value="3">Sucursal 3</option>
+                                                    <option value="4">Sucursal 4</option>
+                                                </select>
+                                            </div>
+            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="registrarEmpleado()">Agregar Empleado</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+                    </section>
+                    <!-- Data list view end -->
+                </div>
+            </div>
+        </div>
+
+    </div>

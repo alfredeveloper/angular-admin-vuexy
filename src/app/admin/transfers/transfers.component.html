@@ -1,0 +1,147 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Transferencia</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Transferencia</a>
+                            </li>
+                            
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+        <!-- Data list view starts -->
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <section id="data-list-view" class="data-list-view-header">
+                        
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtAlmacen" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>PRODUCTO</th>
+                                        <th>STOCK</th>
+                                        <th>VALORIZADO</th>
+                                        <th>FECHA</th>
+                                        <th>HORA</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-transfer"></div>
+                            <div class="add-new-data" id="sn-transfer">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Transferencia</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <!-- Table Hover Animation start -->
+                                        <div class="row" id="table-hover-animation">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="inventario">Inventario:</label>
+                                                                        <input type="text" id="inventario" class="form-control" name="inventario" [(ngModel)]="inventario" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="cantidad">Cantidad:</label>
+                                                                        <input type="number" id="cantidad" class="form-control" name="cantidad" [(ngModel)]="cantidad">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="cantidad">Sede:</label>
+
+                                                                        <select class="select2 form-control" [(ngModel)]="sedeId" (change)="seleccionarSede($event.target)">
+                                                                            <option value="0" disabled>seleccione su sede</option>
+                                                                            <option [value]="sede.id" *ngFor="let sede of seats">{{sede.name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="cantidad">Sucursal:</label>
+
+                                                                        <select class="select2 form-control" [(ngModel)]="subsidiaryId">
+                                                                            <option value="0" disabled>seleccion su sucursal</option>
+                                                                            <option [value]="sucursal.id" *ngFor="let sucursal of sucursales">{{sucursal.name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="col-md-12 col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="date">Fecha de Registro:</label>
+                                                                        <input type="date" id="date" class="form-control" name="date" [(ngModel)]="date">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12">
+                                                                    <button class="btn btn-primary" (click)="registrarTransferencia()">Transferir</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Table head options end -->
+                                    </div>
+                                </div>
+                                <!-- <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="registrarEmpleado()">Agregar Empleado</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <!-- Data list view end -->
+
+    </div>

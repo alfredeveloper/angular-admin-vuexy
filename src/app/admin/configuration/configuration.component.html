@@ -1,0 +1,84 @@
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h2 class="content-header-title float-left mb-0">Configuración</h2>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item"><a>Configuración</a>
+                        </li>
+                        
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="content-body">
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+
+                <div class="row">
+                                    
+                    <div class="col-sm-4 col-12">
+                        <div class="text-bold-600 font-medium-2">
+                            Seleccione Compañía
+                        </div>
+                        <p>Seleccione su Compañía.</p>
+                        <div class="form-group">
+                            <select class="select2 form-control" [(ngModel)]="companyId" (change)="seleccionarCompania($event.target.value)">
+                                <option value="0" disabled>seleccione se compañía</option>
+                                <option [value]="company.id" *ngFor="let company of companias">{{company.name}}</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="text-bold-600 font-medium-2">
+                            Seleccione Sede
+                        </div>
+                        <p>Seleccione su Sede.</p>
+                        <div class="form-group">
+                            <select class="select2 form-control" [(ngModel)]="seatId" (change)="seleccionarSede($event.target.value)">
+                                <option value="0" disabled>seleccione su sede</option>
+                                <option [value]="sede.id" *ngFor="let sede of sedes">{{sede.name}}</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="text-bold-600 font-medium-2">
+                            Seleccione Sucursal
+                        </div>
+                        <p>Seleccione su sucursal.</p>
+                        <div class="form-group">
+                            <select class="select2 form-control" [(ngModel)]="subsidiaryId">
+                                <option value="0" disabled>seleccion su sucursal</option>
+                                <option [value]="sucursal.id" *ngFor="let sucursal of sucursales">{{sucursal.name}}</option>
+                            </select>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="section-button float-right">
+                            <button type="submit" class="btn btn-block btn-primary" (click)="guardarCambios()">Cambiar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

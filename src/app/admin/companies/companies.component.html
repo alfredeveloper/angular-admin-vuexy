@@ -1,0 +1,145 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Compañías</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Compañías</a>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+                        
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtCompanies" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>RUC</th>
+                                        <th>RAZON SOCIAL</th>
+                                        <th>NOMBRE COMERCIAL</th>
+                                        <th>DIRECCIÓN</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-add-company"></div>
+                            <div class="add-new-data" id="sn-add-company">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Agregar Compañía</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="ruc">RUC</label>
+                                                <input type="text" maxlength="11" class="form-control" id="ruc" name="ruc" [(ngModel)]="company.ruc">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name">RAZON SOCIAL</label>
+                                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="company.name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="trade_name">NOMBRE COMERCIAL</label>
+                                                <input type="text" class="form-control" id="trade_name" name="trade_name" [(ngModel)]="company.trade_name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="address">DIRECCIÓN</label>
+                                                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="company.address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="registrarCompania()">Agregar Compañía</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+            
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-edit-company"></div>
+                            <div class="add-new-data" id="sn-edit-company">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Editar Compañia</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="ruc-edit">RUC</label>
+                                                <input type="text" maxlength="11" class="form-control" #ruc id="ruc-edit" name="ruc" [(ngModel)]="company.ruc">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name-edit">NOMBRES</label>
+                                                <input type="text" class="form-control" id="name-edit" #name name="name-edit" [(ngModel)]="company.name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="trade_name-edit">NOMBRE COMERCIAL</label>
+                                                <input type="text" class="form-control" id="trade_name-edit" #trade_name name="trade_name-edit" [(ngModel)]="company.trade_name">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="address-edit">DIRECCIÓN</label>
+                                                <input type="text" class="form-control" id="address-edit" #address name="address-edit" [(ngModel)]="company.address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="editarCompania(name, ruc, trade_name, address)">Guardar Cambios</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Data list view end -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>

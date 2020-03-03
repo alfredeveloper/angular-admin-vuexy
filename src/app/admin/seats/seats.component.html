@@ -1,0 +1,146 @@
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">Sedes</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item"><a>Sedes</a>
+                            </li>
+                           
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="content-body">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <!-- Data list view starts -->
+                    <section id="data-list-view" class="data-list-view-header">
+            
+                        <!-- DataTable starts -->
+                        <div class="table-responsive">
+                            <table id="dtSeats" class="table data-list-view">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>COMPAÑIA</th>
+                                        <th>UBIGEO</th>
+                                        <th>NOMBRE</th>
+                                        <th>ACTIVO?</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- DataTable ends -->
+            
+                        <!-- add new sidebar starts -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-sede"></div>
+                            <div class="add-new-data" id="sn-sede">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Agregar Sede</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="company_id"> Compañía </label>
+                                                
+                                                <select class="select2 form-control" name="company_id" [(ngModel)]="seat.company_id">
+                                                    <option value="0" disabled>seleccion compañía</option>
+                                                    <option [value]="company.id" *ngFor="let company of companies">{{company.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="ubigeo">Ubigeo</label>
+                                                <input type="text" class="form-control" id="ubigeo" name="ubigeo" [(ngModel)]="seat.ubigeo">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name">Nombre</label>
+                                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="seat.name">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="guardarSede()">Guardar</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- add new sidebar ends -->
+                        
+                        <!-- EDITAR -->
+                        <div class="add-new-data-sidebar">
+                            <div class="overlay-bg" id="bg-seat"></div>
+                            <div class="add-new-data" id="edit-seat">
+                                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                                    <div>
+                                        <h4 class="text-uppercase">Editar Sede</h4>
+                                    </div>
+                                    <div class="hide-data-sidebar">
+                                        <i class="feather icon-x"></i>
+                                    </div>
+                                </div>
+                                <div class="data-items pb-3">
+                                    <div class="data-fields px-2 mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="company"> Compañía </label>
+                                                <select class="select2 form-control" id="company_edit" name="company_id" #company>
+                                                    <option value="0" disabled>seleccion compañía</option>
+                                                    <option [value]="company.id" *ngFor="let company of companies">{{company.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="ubigeo">Ubigeo</label>
+                                                <input type="text" class="form-control" id="ubigeo_edit" #ubigeo name="ubigeo">
+                                            </div>
+                                            <div class="col-sm-12 data-field-col">
+                                                <label for="name">Nombre</label>
+                                                <input type="text" class="form-control" id="name_edit" #name name="name" >
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                                    <div class="add-data-btn">
+                                        <button class="btn btn-primary" (click)="editarSede(company, ubigeo, name)">Guardar Cambios</button>
+                                    </div>
+                                    <div class="cancel-data-btn">
+                                        <button class="btn btn-outline-danger">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Data list view end -->
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
